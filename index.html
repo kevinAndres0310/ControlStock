@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tienda Online</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="./index.css" />
+	</head>
+	<body class="">
+		<header>
+			<nav
+				class="navbar bg-dark border-bottom border-body"
+				data-bs-theme="dark"
+			>
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#">Control de stock</a>
+					<button
+						class="navbar-toggler"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbarNav"
+						aria-controls="navbarNav"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarNav">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="#">Home</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<main class="container py-4">
+			<div class="mb-3">
+				<label for="search-products" class="form-label">Buscar producto</label>
+				<input
+					type="text"
+					class="form-control"
+					id="search-products"
+					placeholder="Ejemplo: Vans"
+				/>
+			</div>
+			<!--Aqui esta la tabla-->
+			<article>
+				<table class="table table-dark table-hover align-middle">
+					<thead class="table-info">
+						<tr>
+							<th scope="col">Nº</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">Marca</th>
+							<th scope="col">Color</th>
+							<th scope="col">Precio</th>
+						</tr>
+					</thead>
+					<tbody class="table-group-divider" id="mostrarZapatillas"></tbody>
+				</table>
+				<!-- offCanvas-->
+				<article class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+					<div class="offcanvas-header">
+						<h5 class="offcanvas-title" id="offcanvasExampleLabel">Detalles de Zapatilla</h5>
+						<button type="button" class="btn-close" id="close-offcanvas" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+					</div>
+					<div class="offcanvas-body">
+					</div>
+					
+					<div class="offcanvas-actions">
+						<button class="btn btn-danger" id="remove-article">Remover articulo</button>
+						<button class="btn btn-primary">Editar</button>
+				
+					</div>
+				</article>
+				
+			</article>
+			<!--Aqui esta el button para crear un articulo-->
+			<section class="buttons-table">
+				<button
+					type="button"
+					class="btn btn-primary"
+					data-bs-toggle="modal"
+					data-bs-target="#exampleModal"
+				>
+					Agregar Nuevo producto
+				</button>
+				<!--Aqui esta el Modal-->
+				<article
+					class="modal fade"
+					id="exampleModal"
+					tabindex="-1"
+					aria-labelledby="exampleModalLabel"
+					aria-hidden="true"
+				>
+					<div
+						class="modal-dialog modal-dialog-scrollable modal-fullscreen-sm-down"
+					>
+						<div class="modal-content">
+							<div class="modal-header">
+								<h2 class="modal-title fs-5" id="exampleModalLabel">
+									Agregar nuevo producto
+								</h2>
+								<button
+									type="button"
+									class="btn-close"
+									data-bs-dismiss="modal"
+									aria-label="Close"
+								></button>
+							</div>
+
+							<section class="modal-body">
+								<form action="/submit" id="form-data-zapatilla">
+									<!--Inputs info general-->
+									<div class="mb-3">
+										<label for="nameShoes" class="form-label">Nombre</label>
+										<input
+											type="text"
+											class="form-control"
+											id="nameShoes"
+											name="nameShoes"
+											placeholder="Dunk low retro"
+											required
+										/>
+									</div>
+									<div class="mb-3">
+										<label for="marcaShoes" class="form-label">Marca</label>
+										<input
+											type="text"
+											class="form-control"
+											id="marcaShoes"
+											name="marcaShoes"
+											placeholder="Nike"
+											required
+										/>
+									</div>
+									<div class="mb-3">
+										<label for="precioShoes" class="form-label">Precio</label>
+										<input
+											type="number"
+											class="form-control"
+											id="precioShoes"
+											name="precioShoes"
+											placeholder="$ 0"
+											oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+											required
+										/>
+									</div>
+									<div class="mb-3">
+										<label for="colorShoes" class="form-label">Color</label>
+										<input
+											type="text"
+											class="form-control"
+											id="colorShoes"
+											name="colorShoes"
+											placeholder="Blancas"
+										/>
+									</div>
+									<div class="mb-3">
+										<label for="dateShoes" class="form-label">Fecha</label>
+										<input
+											type="date"
+											class="form-control"
+											id="dateShoes"
+											name="dateShoes"
+											placeholder="Fecha"
+										/>
+									</div>
+									<h3 class="py-4">Talles Ingresados</h3>
+									<!--Inputs de talles-->
+									<div id="talles-inputs" class="row"></div>
+									<!--Button submit-->
+									<div class="form-button-submit">
+										<button
+											id="closeModalButton"
+											type="submit"
+											class="btn btn-primary btn-lg"
+										>
+											Agregar Producto
+										</button>
+									</div>
+								</form>
+							</section>
+						</div>
+					</div>
+				</article>
+			</section>
+		</main>
+		<footer></footer>
+
+
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+			crossorigin="anonymous"
+		></script>
+		<script src="./index.js"></script>
+	</body>
+</html>

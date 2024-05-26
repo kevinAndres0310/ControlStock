@@ -1,0 +1,43 @@
+:root {
+	--background: rgb(8, 17, 29);
+	--text: rgb(232, 239, 249);
+	--primary: rgb(134, 171, 224); /* Color primario */
+	--secondary: rgb(55, 32, 122); /* Color secundario */
+	--accent: rgb(145, 88, 211); /* Color de acento */
+}
+
+body {
+	background-color: var(--background);
+	color: var(--text);
+}
+
+.buttons-table {
+	display: flex;
+	justify-content: space-around;
+}
+
+.modal-content {
+	background-color: var(--background);
+}
+
+.btn-close {
+	background-color: var(--primary);
+}
+
+.form-button-submit {
+	border-top: 1px solid var(--primary);
+	padding-top: 1rem;
+	display: grid;
+	place-content: center;
+}
+
+.cursorPointer {
+	cursor: pointer;
+}
+
+
+.offcanvas-actions {
+	padding: 1rem;
+	display: flex;
+	justify-content: space-between;
+}
